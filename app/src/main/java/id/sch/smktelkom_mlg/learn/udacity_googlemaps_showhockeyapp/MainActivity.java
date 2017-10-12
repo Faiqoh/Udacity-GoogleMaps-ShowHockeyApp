@@ -47,32 +47,32 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         house = new MarkerOptions()
                 .position(new LatLng(-6.886892, 111.654675))
                 .title("My House")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_black_24dp));
 
         quba = new MarkerOptions()
                 .position(new LatLng(-6.887492, 111.656472))
                 .title("Masjid Ar-rahmah")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_black_24dp));
 
         pasar = new MarkerOptions()
                 .position(new LatLng(-6.879152, 111.658757))
                 .title("Pasar Jatirogo")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_black_24dp));
 
         kec = new MarkerOptions()
                 .position(new LatLng(-6.885809, 111.658339))
                 .title("Kantor Kec. Jatirogo")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_black_24dp));
 
         koramil = new MarkerOptions()
                 .position(new LatLng(-6.888232, 111.662722))
                 .title("Koramil Jatirogo")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_black_24dp));
 
         smp = new MarkerOptions()
                 .position(new LatLng(-6.884760, 111.657529))
                 .title("SMPN 1 Jatirogo")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_black_24dp));
 
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         m_map.addMarker(kec);
         m_map.addMarker(koramil);
         m_map.addMarker(smp);
-
+        flyTo(JTG);
     }
 
     @Override
