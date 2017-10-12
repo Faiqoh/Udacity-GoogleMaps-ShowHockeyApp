@@ -1,4 +1,4 @@
-package id.sch.smktelkom_mlg.learn.udacity_googlemaps_mapsgettingstarted;
+package id.sch.smktelkom_mlg.learn.udacity_googlemaps_movingmap;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +17,31 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    static final CameraPosition TBN = CameraPosition.builder()
+            .target(new LatLng(-6.895485, 112.029752))
+            .zoom(17)
+            .bearing(90)
+            .tilt(45)
+            .build();
+    static final CameraPosition PAPUA = CameraPosition.builder()
+            .target(new LatLng(-4.269928, 138.080353))
+            .zoom(17)
+            .bearing(0)
+            .tilt(45)
+            .build();
+    static final CameraPosition BALI = CameraPosition.builder()
+            .target(new LatLng(-8.719735, 115.169073))
+            .zoom(17)
+            .bearing(0)
+            .tilt(45)
+            .build();
+    static final CameraPosition JKT = CameraPosition.builder()
+            .target(new LatLng(-6.175110, 106.865039))
+            .zoom(17)
+            .bearing(90)
+            .tilt(45)
+            .build();
+
     GoogleMap m_map;
     boolean mapReady = false;
 
@@ -25,30 +50,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnMap = (Button) findViewById(R.id.btnMap);
-        btnMap.setOnClickListener(new View.OnClickListener() {
+        Button btnPapua = (Button) findViewById(R.id.btnPapua);
+        btnPapua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mapReady)
-                    m_map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    flyTo(PAPUA);
             }
         });
 
-        Button btnSatellite = (Button) findViewById(R.id.btnSatellite);
-        btnSatellite.setOnClickListener(new View.OnClickListener() {
+        Button btnBali = (Button) findViewById(R.id.btnBali);
+        btnBali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mapReady)
-                    m_map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    flyTo(BALI);
             }
         });
 
-        Button btnHybrid = (Button) findViewById(R.id.btnHybrid);
-        btnHybrid.setOnClickListener(new View.OnClickListener() {
+        Button btnJkt = (Button) findViewById(R.id.btnJkt);
+        btnJkt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mapReady)
-                    m_map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    flyTo(JKT);
             }
         });
 
@@ -63,9 +88,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         toast.show();
         mapReady = true;
         m_map = map;
-        LatLng smktelkom = new LatLng(-7.976830, 112.658958);
-        CameraPosition target = CameraPosition.builder().target(smktelkom).zoom(14).build();
-        m_map.moveCamera(CameraUpdateFactory.newCameraPosition(target));
+        m_map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        flyTo(TBN);
 
     }
 
@@ -84,5 +108,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void flyTo(CameraPosition target) {
+        m_map.animateCamera(CameraUpdateFactory.newCameraPosition(target), 10000, null);
     }
 }

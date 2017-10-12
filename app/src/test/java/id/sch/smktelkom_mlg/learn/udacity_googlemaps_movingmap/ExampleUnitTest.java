@@ -1,4 +1,4 @@
-package id.sch.smktelkom_mlg.learn.udacity_googlemaps_mapsgettingstarted;
+package id.sch.smktelkom_mlg.learn.udacity_googlemaps_movingmap;
 
 import org.junit.Test;
 
